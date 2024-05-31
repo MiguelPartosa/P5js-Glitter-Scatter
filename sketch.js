@@ -1,14 +1,17 @@
 let col = [0, 0, 0];
 let sign = new Array(3).fill(1);
-let factor = 0;
-let frames
+let myBalls;
+let locationX, locationY;
+//temporary to test animation
+
 function setup() {
     frames = createDiv(100);
     var canvas = createCanvas(400, 400);
-    background(200);
-    blendMode(BLEND);
-    noStroke();
+    background(0);
     canvas.parent('sketchDiv');
+    myBalls = new Balls(width / 2, height / 2, 40);
+    locationX = random(0, width);
+    locationY = random(0, height);
 }
 
 // changes color
@@ -19,13 +22,21 @@ function addRand() {
 }
 
 function draw() {
-    // TODO: ball trail/ delete balls after lifetime
-    // TODO: bounce balls on spawn 
-    factor += 3;
+    // TODO ball trail/ delete balls after lifetime
+    // TODO bounce balls on spawn 
+    // FIXME ball colors not fading
+
+    // let xDirection = 
+    // locationX += random(0, xDirection);
+    // locationX += random(0, yDirection);
+
     if (mouseIsPressed) {
         addRand();
         fill(...[col]);
-        ellipse(mouseX, mouseY, 10, 10)
+        noStroke();
+        myBalls.insert(mouseX, mouseY, 40);
+        myBalls.stats();
     }
-    background(200, 200, 200, 10)
+    myBalls.cycle();
+
 }

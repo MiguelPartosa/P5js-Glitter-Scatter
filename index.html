@@ -4,6 +4,7 @@
         <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
         <!-- final -->
         <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.js"></script> -->
+        <script src="ball.js"></script>
         <script src="sketch.js"></script>
         <link
             href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
@@ -11,10 +12,13 @@
         />
     </head>
     <body>
-        <div id="sketchDiv" class="text-3xl">
-            Draw some bouncing rainbow balls
-            fps: <span id="fps"></span>
+        <div
+            class="flex flex-col gap-20 self-center items-center justify-self-center"
+        >
+            <p class="text-5xl -mb-10">Some Balls</p>
+            <div id="sketchDiv">
+                <span id="fps"></span>
+            </div>
         </div>
-        Goodbye
     </body>
 </html>
