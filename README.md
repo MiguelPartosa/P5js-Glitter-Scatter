@@ -1,17 +1,25 @@
-# Hello
+# Hello 😁
 
-This is my first ever project in p5. All previous project were in Processing
+## Goal of this project
 
-### ~29/05/2024 Goals
+Using **P5JS** to make balls and scatter them around like they're a bunch of glitter/star objects
+
+### Things I should have learned sooner about p5
+
+-   Calling `Background(red,blue,green,alpha < 255)` does not fully cover the background to make a _trailing effect_ even after multiple calls. It will leave a ghosting effect.
+-   Using multiple p5js Files is as easy as adding `<script src="anotherScript.js"></script>` to the main html file.
+
+### Short term Goals
+
 -   [x] Relearn the basic structure of p5
 -   [x] Embedded into an html to look like one page
--   [ ] Complete ball logic
--   [ ] Mouse Click and drag feature to launch balls
--   [ ] Ball trail and deleting the balls once their lifetime is over
+-   [ ] ~~Mouse Click and drag feature to launch balls~~
+-   [x] Ball trail and deleting the balls once their lifetime is over
+-   [ ] ~~Ball physics~~
 -   [ ] Obstacles or options to release multiple balls at once
 -   [ ] Add interactive buttons to change/alter simulation
 
 ### If I come back to this
--   [ ] Documentation easy enough for a beginner to understand
--   [ ] Properly integrate TailwindCSS with npm for future use
-    -   [ ] Might also be worth looking into loading p5 with npm 
+
+-   [ ] Shift from frame/draw dependance to something more reliable for consistent viewing accross different devices
+-   [ ] Performance improvements where possible

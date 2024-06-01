@@ -1,6 +1,8 @@
+
 const BALL_SIZE = 40 //default ball size
-const LIFE = 200 //200 frames
+const LIFE = 100 //200 frames
 const COLOR_CHANGE = 10; //factor of change in color
+const NOISE_TRAIL_DELAY = 100;
 /**
  * Fundamental ball unit
  * @param {any} x
@@ -10,6 +12,8 @@ const COLOR_CHANGE = 10; //factor of change in color
  */
 class Ball {
     constructor(x, y, size) {
+        // for random noise
+        this.id = random(0, 500);
         this.x = x;
         this.y = y;
         this.size = size;
@@ -31,11 +35,12 @@ class Ball {
  */
 
 class Balls {
+
     constructor(x = random(0, width), y = random(0, height), size = BALL_SIZE) {
         this.collection = [new Ball(x, y, size)];
     }
 
-    insert(x = random(0, width), y = random(0, height), size = BALL_SIZE) {
+    insertBall(x = random(0, width), y = random(0, height), size = BALL_SIZE) {
         // might be unecessary
         if (this.collection.length === 0)
             this.collection = [new Ball(x, y, size)];
@@ -44,15 +49,15 @@ class Balls {
     }
 
     /**
-     * Shows balls  and deincrements lifetime and deletes
+     * Shows balls and deincrements lifetime and deletes
      */
-    display() {
+    displayBalls() {
         push();
         for (let i = 0; i < this.collection.length; i++) {
             let currentEllipse = this.collection[i];
             fill(this.rainbowColor(currentEllipse));
             if (currentEllipse.lifetime <= 0) {
-                this.remove(i);
+                this.removeBall(i);
             }
             else {
                 circle(currentEllipse.x, currentEllipse.y, currentEllipse.size);
@@ -66,7 +71,6 @@ class Balls {
      * Changes the color of the balls individually 
      */
     rainbowColor(ellipseObject) {
-        // FIXME change color array to an attribute and sign
         let opacity = map(ellipseObject.lifetime, 0, LIFE, 0, 255);
         let choice = random([0, 1, 2]);
 
@@ -82,27 +86,41 @@ class Balls {
      * exclusively for animation/simulation logic
      */
     cycle() {
+        push();
         for (let i = 0; i < this.collection.length; i++) {
             let currentEllipse = this.collection[i];
         }
+        pop();
         // scale(2, 1, 1);
     }
 
     /**
-     * Added noise and a little scatter effect for when placing balls
+     * Seperated this method and the ball physics simulation for clarity, might remove/modify this method later
      */
-    noise() {
-        
+    ballNoise() {
+        // TODO performance improvements!
+
+        for (let i = 0; i < this.collection.length; i++) {
+            let currentEllipse = this.collection[i];
+            noiseSeed(currentEllipse.id);
+            let xNoise = 10 * map(noise(frameCount * 0.05), 0, 1, -1, 1)
+            noiseSeed(currentEllipse.id + 10000);
+            let yNoise = 10 * map(noise(frameCount * 0.05), 0, 1, -1, 1)
+            currentEllipse.x += xNoise;
+            currentEllipse.y += yNoise;
+
+            currentEllipse.size -= (noise(frameCount * 0.05));
+        }
     }
 
-    remove(indexToRemove) {
-        let toRemove = this.collection.splice(indexToRemove, 1);
-        this.stats();
+    removeBall(indexToRemove) {
+        this.collection.splice(indexToRemove, 1);
+        this.ballCollectionStats();
     }
 
     /**
-     * show all balls in the collection
+     * Stats for monitoring
      */
-    stats() { console.log(this.collection.map(x => x)) }
+    ballCollectionStats() { console.log(this.collection.map(x => x)) }
 }
 
