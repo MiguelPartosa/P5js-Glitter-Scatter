@@ -1,5 +1,7 @@
 # Hello 😁
 
+    🚧 Ongoing Project 🚧
+
 ## Goal of this project
 
 Using **P5JS** to make balls and scatter them around like they're a bunch of glitter/star objects
