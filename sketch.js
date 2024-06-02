@@ -1,5 +1,5 @@
 let myBalls;
-const BACKGROUND__COLOR = '#000000';
+const BACKGROUND__COLOR = '#9ED0D2';
 
 function setup() {
     var canvas = createCanvas(400, 400);
