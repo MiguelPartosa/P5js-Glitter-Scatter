@@ -4,10 +4,14 @@
 
 ## Goal of this project
 
-![Preview gif of the current project output](/preview.gif)
+<div style = "text-align:center">
+    <img src = "/preview.gif" width = 400 style="margin-left:center">
+
 Using **P5JS** to make balls and scatter them around like they're a bunch of glitter/star objects
 
-### Things I should have learned sooner about p5
+</div>
+
+### Things I wish I learned sooner about p5
 
 -   Calling `Background(red,blue,green,alpha < 255)` does not fully cover the background to make a _trailing effect_ even after multiple calls. It will leave a ghosting effect.
 -   Using multiple p5js Files is as easy as adding `<script src="anotherScript.js"></script>` to the main html file.
