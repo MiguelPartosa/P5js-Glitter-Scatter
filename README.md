@@ -4,6 +4,7 @@
 
 ## Goal of this project
 
+![Preview gif of the current project output](/preview.gif)
 Using **P5JS** to make balls and scatter them around like they're a bunch of glitter/star objects
 
 ### Things I should have learned sooner about p5
